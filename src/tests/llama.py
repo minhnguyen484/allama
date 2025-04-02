@@ -6,7 +6,7 @@ from openai import OpenAI
 load_dotenv(override=True)
 
 BASE_URL = os.getenv("OLLAMA_BASE_URL")
-MODEL = os.getenv("MODEL")
+MODEL = os.getenv("OLLAMA_MODEL")
 API_KEY = os.getenv("OLLAMA_API_KEY")
 openai = OpenAI(base_url=BASE_URL, api_key=API_KEY)
 
@@ -47,9 +47,8 @@ function refresh() {
     }
 }
 """
-
 gr.Interface(fn=stream_gpt, 
-             inputs="textbox", 
-             outputs="textbox", 
+             inputs=[gr.Textbox(label="Prompt")], 
+             outputs=[gr.Textbox(label="Assistant")], 
              flagging_mode="never", 
              js=forcing_dark_mode).launch(inbrowser = True)
