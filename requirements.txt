@@ -1,0 +1,6 @@
+requests
+dotenv
+bs4
+IPython
+openai
+gradio
